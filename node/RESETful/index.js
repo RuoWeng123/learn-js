@@ -16,28 +16,6 @@ import SystemsAction from './users/getSystems'
 import PasswordVerifyAction from './users/verifyPassword'
 import KeyVerifyAction from './users/verifyKey'
 
-//通用接口
-import PointMap from './common/pointMap';
-import PolymericCurve from './common/polymericCurve';
-import HistoryData from './common/getHistory'
-import ReportList from './common/reportList';
-import ReportDetail from './common/reportDetail';
-import TargetReportList from './common/targetReportList';
-import Control from './common/control';
-
-// 视频监控
-import CamerasNewAction from './cameras/new'
-import CamerasUpdateAction from './cameras/update'
-import GetCamerasAction from './cameras/getCameras'
-import GetFavAction from './cameras/getFavCameras'
-import UpdateFavCamerasAction from './cameras/updateFavCameras'
-import GetCameraGlobalInfoAction from './cameras/getGlobalInfo'
-import CamerasTranscodeAction from './cameras/transcode'
-
-//报警系统
-import GetWarningList from './notification/getWarningList'
-import UpdateTargetWarning from './notification/updateTargetWarning'
-import GetWarninOverview from './notification/getWarningOverview'
 
 // 配置中心
 import ConfigNew from './config/new'
@@ -104,30 +82,4 @@ export default [
     PasswordVerifyAction,
     KeyVerifyAction,
 
-    //通用接口
-    PointMap,
-    PolymericCurve,
-    HistoryData,
-    ReportList,
-    ReportDetail,
-    TargetReportList,
-    Control,
-    
-    // 视频监控
-    CamerasNewAction,
-    CamerasUpdateAction,
-    GetCamerasAction,
-    GetFavAction,
-    UpdateFavCamerasAction,
-    GetCameraGlobalInfoAction,
-    CamerasTranscodeAction,
-
-    //warning
-    GetWarningList,
-    UpdateTargetWarning,
-    GetWarninOverview,
-
-    // 配置中心
-    ConfigNew,
-    ConfigGetText
 ]
