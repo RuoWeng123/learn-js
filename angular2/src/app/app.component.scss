@@ -1,0 +1,61 @@
+a{
+    text-decoration: none !important;
+}
+.chart-area{
+    width:80%;
+    height:auto;
+    margin:auto;
+
+    canvas{
+        width:100%;
+    }
+}
+
+.together-area{
+    li{
+        border-top:1px solid #e4e4e4;
+        padding:16px;
+    }
+    span{
+        display:inline-block;
+        width:300px;
+        height:40px;
+        line-height:40px;
+    }
+}
+
+.custom-accordion{
+    margin-bottom:32px;
+    a{
+        color:blue;
+        text-decoration: none !important;
+    }
+}
+
+
+.pull-left {
+    float:left;
+}
+.pull-right {
+    float:right;
+}
+
+.mb16 {
+    margin-bottom: 16px !important;
+}
+.mr16 {
+    margin-right: 16px !important;
+}
+.ml16 {
+    margin-left: 16px !important;
+}
+.ml8 {
+    margin-left: 8px !important;
+}
+.mt16 {
+    margin-top: 16px !important;
+}
+.inline-block{
+    display: inline-block;
+    margin-right:16px;
+}

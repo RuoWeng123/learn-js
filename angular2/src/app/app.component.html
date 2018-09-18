@@ -1,0 +1,172 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="chart-area" >
+    <p-growl [(value)]="msgs" ></p-growl>
+    <chart [options]="options"></chart>
+</div>
+
+<div class="add-area">
+    <button type="button" class="ml16 mb16" pButton icon="fa-plus" (click)="showDialogToAdd()" label="add"></button>
+</div>
+<div class="custom-accordion">
+        <p-accordion (onOpen)="onTabOpen($event)">
+            <p-accordionTab [header]="dataTable.tableName" *ngFor=" let dataTable of dataBase; let index = index" [selected]="index === 0" >
+                <div style="text-align:left; margin-top:16px;">
+                    <div class="mb16" style="height:40px;">
+                        <button type="button" class="ui-button-warning  mb16 pull-right mr16"  pButton icon="fa-trash-o" (click)="showDialogToDelete()" label="delete"></button>
+                        <button type="button" class=" mb16 pull-right mr16"  pButton icon="fa-edit" (click)="showDialogToEdit()" label="edit"></button>
+                    </div>
+
+                    <p-table [columns]="cols" [value]="tables" dataKey="tableName">
+                        <ng-template pTemplate="header" let-columns>
+                            <tr>
+                                <th style="width:2.25em"></th>
+                                <th>表名称</th>
+                                <th>所属数据库</th>
+                                <th>数据库类型</th>
+                                <th>保存时间</th>
+                                <th>修改后是否删除原数据</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-columns="columns">
+                            <tr>
+                                <td>
+                                    <a href="#" [pRowToggler]="rowData">
+                                        <i [ngClass]="expanded ? 'fa fa-fw fa-chevron-circle-down' : 'fa fa-fw fa-chevron-circle-right'"></i>
+                                    </a>
+                                </td>
+                                <td>{{rowData.tableName}}</td>
+                                <td>{{rowData.databaseName}}</td>
+                                <td>{{rowData.databaseType}}</td>
+                                <td>{{rowData.majorTtl}}</td>
+                                <td>{{rowData.deleteMajorData}}</td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="rowexpansion" let-rowData let-columns="columns" >
+                            <div style="width:100%;height:auto;padding-left:24px;">
+                                <div style="display: inline-block; height:auto;margin-right:32px;">
+                                    <h5>字段</h5>
+                                    <p-table [value]="rowData.columns" >
+                                        <ng-template pTemplate="header">
+                                            <tr >
+                                                <td style="width:200px;height:40px;border: 1px solid #e4e4e4">名称</td>
+                                                <td style="width:200px;height:40px;border: 1px solid #e4e4e4">类型</td>
+                                                <td style="width:200px;height:40px;border: 1px solid #e4e4e4">可索引</td>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-column>
+                                            <tr>
+                                                <td style="width:200px;height:35px">{{column.name}}</td>
+                                                <td style="width:200px;height:35px">{{column.type}}</td>
+                                                <td style="width:200px;height:35px">{{column.tagFlag}}</td>
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </p-table>
+                </div>
+                <hr>
+                <div class="together-area">
+                    <h3 class="inline-block">聚合规则</h3>
+                    <button type="button" class="ui-button-info  pull-right mr16 mt16" pButton icon="fa-plus" (click)="addTogether()" label="添加规则"></button>
+                    <button type="button" class="ui-button-info  pull-right mr16 mt16" pButton icon="fa-save" (click)="saveTogether()" label="保存规则"></button>
+                    <ol>
+                        <li *ngFor="let together of togetherList; let index = index">
+                            <div>
+                                <span class="label">聚合表名</span><input pInputText  [(ngModel)]="together.cqName" />
+                                <button type="button" class="ui-button-warning mb16 pull-right" pButton icon="fa-trash-o" (click)="deleteTogether(index)" label="删除规则"></button>
+                            </div>
+                            <div>
+                                <span>聚合周期</span><p-dropdown  [options]="majorTtls" [(ngModel)]="together.during"  [style]="{'width':'150px'}"></p-dropdown>
+                            </div>
+                            <div>
+                                <span>聚合保存时间</span><p-dropdown  [options]="majorTtls_2" [(ngModel)]="together.cqTtl"  [style]="{'width':'150px'}"></p-dropdown>
+                            </div>
+                            <div>
+                                <span>修改或删除表格时，删除原始数据</span>
+                                <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="together.deleteGroupData"></p-inputSwitch>
+                            </div>
+                            <div>
+                                <span>聚合字段</span>
+                                <div class="inline-block" *ngFor=" let item of columnsList">
+                                    <p-checkbox name="aggregateColumns" [value]="item.name" [label]="item.name"
+                                                [(ngModel)]="together.aggregateColumns"
+                                    ></p-checkbox>
+                                </div>
+
+                            </div>
+                            <div>
+                                <span>group字段</span>
+                                <div class="inline-block" *ngFor=" let item of tagsList">
+                                    <p-checkbox name="groupByColumns" [value]="item.name" [label]="item.name"
+                                                [(ngModel)]="together.groupByColumns"
+                                    ></p-checkbox>
+                                </div>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </p-accordionTab>
+        </p-accordion>
+
+
+
+    <p-dialog header="表添加" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [closable]="true" [width]="700">
+        <div class="ui-g ui-fluid" *ngIf="table">
+            <div class="ui-g-3"><label for="tableName">表名</label></div>
+            <div class="ui-g-9"><input pInputText id="tableName" [(ngModel)]="table.tableName" [disabled]="!newTable" /></div>
+
+            <div class="ui-g-3"><label for="databaseName">数据库</label></div>
+            <div class="ui-g-9"><input pInputText id="databaseName" [(ngModel)]="table.databaseName" [disabled]="!newTable"/></div>
+
+            <div class="ui-g-3"><label >数据库类型</label></div>
+            <div class="ui-g-9">
+                <p-dropdown  [options]="dataBaseList" [(ngModel)]="table.databaseType"  [style]="{'width':'150px'}" [disabled]="!newTable"></p-dropdown>
+            </div>
+
+            <div class="ui-g-3"><label >保存时间</label></div>
+            <div class="ui-g-9">
+                <p-dropdown  [options]="majorTtls_2" [(ngModel)]="table.majorTtl"  [style]="{'width':'150px'}" [disabled]="!newTable"></p-dropdown>
+            </div>
+
+            <div class="ui-g-3"><label title="修改表格内容时，是否清空原理的数据">是否清理原数据</label></div>
+            <div class="ui-g-9">
+                <p-inputSwitch onLabel="Yes" offLabel="No" [(ngModel)]="table.deleteMajorData"></p-inputSwitch>
+            </div>
+            <hr>
+            <div class="ui-g-12">
+                <label>数据列</label>
+                <button pButton class="pull-right ui-button-info" (click)="addColumn()" icon="fa-plus" style="width:60px;"></button>
+            </div>
+            <div class="ui-g-12" >
+                <div *ngFor="let col of table.columns ; let idx = index" style="width:100%;height:40px;">
+                    <input pInputText id="columns" [(ngModel)]="col.name" placeholder="只允许英文和数字"  style="width:250px;"/>
+                    <p-dropdown class="ml8" [options]="columnsType" [(ngModel)]="col.type" ></p-dropdown>
+                    <p-checkbox class="ml8" [(ngModel)]="col.tagFlag" binary="true" label="索引" *ngIf="col.type === 'string'"></p-checkbox>
+                    <button pButton class="pull-right ui-button-warning" (click)="deleteColumn(idx)" icon="fa-trash-o" style="width:60px;"></button>
+                </div>
+            </div>
+            <hr>
+
+        </div>
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" pButton icon="fa-close" (click)="delete()" label="Cancel"></button>
+                <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+            </div>
+        </p-footer>
+    </p-dialog>
+
+    <p-dialog header="表删除" [(visible)]="displayDialogDelete" [responsive]="true" showEffect="fade" [modal]="true" [closable]="true" [width]="700">
+        <div *ngIf="table">
+            <span>将要删除的表为：</span><span>{{ table.tableName }}</span>
+        </div>
+        <p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <button type="button" pButton icon="fa-close" (click)="cancel()" label="Cancel"></button>
+                <button type="button" pButton icon="fa-check" class="mr16" (click)="ok(table)" label="ok"></button>
+            </div>
+        </p-footer>
+    </p-dialog>
+</div>
