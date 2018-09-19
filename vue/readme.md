@@ -12,7 +12,7 @@
        deep: true
    },
   ```
-2. Array.indexOf(Obj)不能用来用来判断Object对象
+2. Array.indexOf(Obj)不能用来用来判断Object对象    建议使用array.includes(target)方法来实现
   ```
   this.tableData = [
       {name:'1#机器人',co:'67',template:'23',ch4:'23',time:'2018-09-12 09:11:11',_checked:false},
