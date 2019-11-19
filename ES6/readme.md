@@ -27,4 +27,35 @@
     let a = [22,78,1,23,2]
     Math.max(...a)  // 78
     ```
-5.
+5. 数据合并
+    ```
+     let {a , b}  = {[1,2,3], [2,3,4]}
+     let c = [... new Set([...a, ...b])]
+    ```
+ 6. 交并差 集合的使用  其实使用ramda的 intersecti
+    ```
+    let a = new Set([1,2,3])
+    let b = new Set([2,3,4])
+    // 交集
+    R.intersection([...a],[...b])
+
+    let c = new Set([...a].filter(item => b.has(item)))
+
+    // 并集
+    R.union([1, 2, 3], [2, 3, 4]); //=> [1, 2, 3, 4]
+
+    //并集使用set
+    let c = [... new Set([...a, ...b])]     // [1,2,3,4]
+
+    // 差
+
+    let c = new Set([...a].filter(x => !b.has(x)))
+
+    ```
+7. 冒泡排序
+
+8. 快速排序
+
+9. 插入排序
+
+10. 归并排序
