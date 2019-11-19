@@ -20,7 +20,7 @@
 3. 数据拼接
     ```
     let {a,b,c} = {[1,2],[3,4],[5,6]}
-    [...a,...b,...c]  //[1,2,3,4,5,6] 
+    [...a,...b,...c]  //[1,2,3,4,5,6]
     ```
 4. 求数组中最大值
     ```
@@ -32,7 +32,8 @@
      let {a , b}  = {[1,2,3], [2,3,4]}
      let c = [... new Set([...a, ...b])]
     ```
- 6. 交并差 集合的使用  其实使用ramda的 intersecti
+
+6. 交并差 集合的使用  其实使用ramda的 intersecti
     ```
     let a = new Set([1,2,3])
     let b = new Set([2,3,4])
@@ -52,10 +53,13 @@
     let c = new Set([...a].filter(x => !b.has(x)))
 
     ```
-7. 冒泡排序
+7. 冒泡排序- reference bubbleSort.js
 
-8. 快速排序
 
-9. 插入排序
+8. 选择排序 -reference selectionSort.js
 
-10. 归并排序
+9. 插入排序 -reference intersectionSort.js
+
+10. 归并排序 -reference megerSort.js
+
+11. 快速排序 -reference quickSort.js
