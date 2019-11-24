@@ -63,3 +63,46 @@
 10. 归并排序 -reference megerSort.js
 
 11. 快速排序 -reference quickSort.js
+
+
+
+其实掌握常见的这几种就够了
+12. reduce 语法的使用
+    + 将数组转换为对象
+    + 展开更大的数据
+    + 在一次便利中进行两次计算
+    + 将映射和锅炉函数组合
+    + 按顺序运行异步函数
+    ```
+    // 将数组转换为对象,后端给了一份数组数据回来了,但是在使用的时候显然对象的效率要高一些.如果我们需要将数组的id作为key,数组的每一项都是value呢?
+
+    const userList = [
+        {
+            id:'孙悟空',
+            age: 500,
+            text:'吃俺老孙一棒'
+        },
+        {
+            id:'唐三藏',
+            age:25,
+            text:'悟空,为师饿了'
+        },
+        {
+            id:'猪八戒',
+            age:300,
+            text:'媳妇,高老庄就是我家 '
+        },
+        {
+            id:'沙悟净',
+            age:200,
+            text:'大师兄,二师兄又要分行李'
+        }
+    ]
+
+    function keyByUserNameReducer(acc, person){
+        return {...acc, [person.id]:person}
+    }
+    let userObj = userList.reduce(keyByUserNameReducer, {});
+    console.log(userObj)
+
+    ```
