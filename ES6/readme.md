@@ -106,3 +106,31 @@
     console.log(userObj)
 
     ```
+13. array.form() 将类数组转为真正的数组
+    +   例如对于arguments 的转换
+    ```
+     let args = array.slice.call(arguments)
+
+     let args = [].slice.call(arguments)
+
+
+     let args = array.from(arguments)
+
+     let args = [...arguments]
+    ```
+
+    + set结构转化为真真的数组
+    ```
+        let arr = [1,2,3,4,5,1,2];
+        let set = new Set(arr)
+        let new_arr = Array.form(set)
+    ```
+
+    + 将字符串转化为数组
+    ```
+        let str = "hello word"
+
+        console.log(str.split(''))
+
+        console.log(Array.from(str))
+    ```
