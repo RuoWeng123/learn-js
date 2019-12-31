@@ -134,3 +134,22 @@
 
         console.log(Array.from(str))
     ```
+
+14. splice 和  delete 删除数组中内容的相同点和不同点
+```
+ let a = [
+        {id:"1", age:1},
+        {id:"2", age:1},
+        {id:"3", age:1},
+        {id:"4", age:1},
+    ]  
+
+    a.splice(1,1)
+    // 此时数组的长度 -1
+
+    delete a[1]
+
+    // 此时数组的长度不变，只是数据的第二项 变为 undefined
+
+
+```

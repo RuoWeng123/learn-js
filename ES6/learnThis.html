@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        test this  call apply bind
+    </title>
+</head>
+<body>
+    content
+    <p id="p1">p1</p>
+    <p id="p2">p2</p>
+    <p id="p3">p3</p>
+    <p id="p4">p4</p>
+    <p id="p5">p5</p>
+   
+</body>
+
+    
+</html>
+<script type="javascript">
+    const name = 'window'
+    const foo = {name: 'foo'}
+    const bar = {
+        name:"bar",
+        say(){
+            console.log(this.name)
+        }
+    }
+
+    console.log("============")
+    let p1 = bar.call(foo)
+    Document.getElementById("p1").text = p1
+    console.log(bar.call(foo))
+    console.log(bar.call())
+</script>
