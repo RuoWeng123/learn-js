@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>codemirror</title>
+    <script src="../node_modules/codemirror/src/codemirror.js"></script>
+    <script src="../node_modules/codemirror/mode/javascript/javascript.js"></script>
+    <script src="../node_modules/codemirror/mode//css/css.js"></script>
+    <script src="../node_modules/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="../node_modules/codemirror/keymap/sublime.js"></script>
+    <script src="../node_modules/codemirror/addon/hint/show-hint.js"></script>
+    <script src="../node_modules/codemirror/addon/hint/css-hint.js"></script>
+    <script src="../node_modules/codemirror/addon/hint/javascript-hint.js"></script>
+</head>
+<body>
+    <div class="title">this is title  codemirror</div>
+    <div class="contetn">
+        <textarea name="code" id="code" cols="200" rows="50" placeholder="enter your code "> </textarea>
+    </div>
+
+    <script>
+        var delay;
+        // Initialize CodeMirror editor with a nice html5 canvas demo.
+
+        // css editor
+        var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+            lineNumbers: true,
+            styleActiveLine: true,
+            matchBrackets: true,
+            mode: "text/x-scss",
+            keyMap: "sublime",
+            theme: 'monokai',
+            autoCloseTags: true,
+            lineWrapping: true,
+            extraKeys: {"Ctrl-Space": "autocomplete"}
+        });
+        editor.on("change", function() {
+            clearTimeout(delay);
+
+            //delay = setTimeout(updatePreview, 0);
+        });
+    </script>
+</body>
+
+<style type="css">
+    .title{
+
+    }
+</style>
+</html>

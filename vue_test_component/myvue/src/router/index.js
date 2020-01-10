@@ -13,16 +13,21 @@ const routers = [
         redirect:'/welcome',
         children:[
             {
-                path:"welcome",
+                path:"/welcome",
                 name:"welcome",
                 component:_import('welcome/index')
             }
         ]
     },
     {
-        path:"communication",
+        path:"/communication",
         name:"communication",
         component: _import('communication/index')
+    },
+    {
+        path:"/codemirror",
+        name:"codemirror",
+        component: _import("codemirror/editor-javascript")
     }
 ]
 
