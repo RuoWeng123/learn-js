@@ -1,33 +1,25 @@
+function quickSort(arr){
+  let length = arr.length;
+  if(length<=1) return arr;
+  let pivotIndex = Math.floor(length /2);
+  let pivot = arr.splice(pivotIndex, 1)[0];
 
-function quickSort(arr, left, right){
-  let len = arr.length;
-  let partitionIndex;
-  let left = typeof left !='number' ? 0 : left;
-  let right = typeof right !='number' ? 0 : right;
-
-  if(left < right){
-    partitionIndex = partition(arr, left, right)
-    quickSort(arr, left, partitionIndex -1);
-    quickSort(arr, partitionIndex+1, right)
-  }
-  return arr
-}
-
-function partition(arr, left, right){
-  let pivot = left,
-      index = pivot +1;
-  for(var i = index; i<right; i++){
-    if(arr[i] < arr[pivot]){
-      swap(arr, i, index);
-      index++;
+  let left = [];
+  let right = [];
+  for(let i = 0; i< length; i++){
+    if(arr[i] < pivot){
+      left.push(arr[i])
+    }else{
+      right.push(arr[i])
     }
   }
-  swap(arr, pivot, index - 1);
-  return index-1;
+
+  return quickSort(left).concat(pivot, quickSort(right));
 }
 
-function swap(arr, i, j) {
-  var temp = arr[i];
-  arr[i] = arr[j];
-  arr[j] = temp;
-}
+
+let arr = [5,47,28,2,9,66,30,41,10,55]
+
+let sortArr = quickSort(arr)
+
+console.log(sortArr)
