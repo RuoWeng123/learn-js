@@ -7,12 +7,16 @@
 </template>
 <script>
 import dayjs from 'dayjs'
+
 export default {
     name:"welcome",
     data(){
         return{
             now: dayjs().format("YYYY-MM-DD HH:mm")
         }
+    },
+    mounted() {
+        console.log(this.$router)
     }
 }
 </script>

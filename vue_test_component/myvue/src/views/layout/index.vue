@@ -14,16 +14,13 @@
     </div>
 </template>
 <script>
-import router from '@/router'
 export default {
     name:"layout",
     data(){
-        return{
-            route : router
-        }
+        return{ }
     },
     mounted(){
-        //console.log("==")
+
     }
 }
 </script>
