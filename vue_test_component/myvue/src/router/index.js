@@ -27,6 +27,11 @@ const routers = [
         path:"/codemirror",
         name:"web编辑器",
         component: _import("codemirror/editor-javascript")
+    },
+    {
+        path:"/echarts",
+        name:"图表",
+        component: _import("echart/index")
     }
 ]
 
