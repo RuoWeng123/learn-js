@@ -17,7 +17,7 @@ import PieChart from "./components/pieChart"
 import LineChart from "./components/lineChart"
 import BarChart from "./components/barChart"
 export default {
-    name:"test echart",
+    name:"echart",
     components:{
         PieChart,
         LineChart,
