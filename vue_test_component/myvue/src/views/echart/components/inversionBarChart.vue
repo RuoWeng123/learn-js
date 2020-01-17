@@ -52,7 +52,8 @@
           },
           legend: {
             show:this.config.showLegend,
-            data: ['2011年', '2012年']  //当前series下sereis中得name集合
+            //当前series下sereis中得name集合
+            data: ['2011年', '2012年']
           },
           grid: {
             left: '3%',

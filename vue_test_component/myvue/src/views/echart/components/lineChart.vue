@@ -61,6 +61,21 @@
               name: this.config.title,
               type: 'line',
               barWidth: '60%',
+              smooth:true,
+              areaStyle:{
+                color:{
+                  type:'linear',
+                  x: 0,
+                  y: 1,
+                  x2: 0,
+                  y2: 0,
+                  colorStops: [{
+                    offset: 0, color: '#d3e2ef' // 0% 处的颜色
+                  }, {
+                    offset: 1, color: '#10a3a2' // 100% 处的颜色
+                  }]
+                }
+              },
               data: this.series
             }
           ]
