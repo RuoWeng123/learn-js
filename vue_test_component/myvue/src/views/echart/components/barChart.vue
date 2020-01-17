@@ -60,6 +60,18 @@
               name: this.config.title,
               type: 'bar',
               barWidth: '60%',
+              emphasis: {
+                itemStyle: {
+                  color: new echarts.graphic.LinearGradient(
+                    0, 0, 0, 1,
+                    [
+                      {offset: 0, color: '#83bff6'},
+                      {offset: 0.57, color: '#2378f7'},
+                      {offset: 1, color: '#2378f7'}
+                    ]
+                  )
+                }
+              },
               data: this.series
             }
           ]

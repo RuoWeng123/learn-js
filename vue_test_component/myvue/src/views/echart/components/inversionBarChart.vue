@@ -38,6 +38,7 @@
     methods: {
       drawChart() {
         const options = {
+          color:"#45A1FF ",
           title: {
             text: '世界人口总量',
             subtext: '数据来自网络'
@@ -69,12 +70,17 @@
             {
               name: '2011年',
               type: 'bar',
+              itemStyle: {
+                color: new echarts.graphic.LinearGradient(
+                  1, 0, 0, 0,
+                  [
+                    {offset: 0, color: '#83bff6'},
+                    {offset: 0.57, color: '#2378f7'},
+                    {offset: 1, color: '#2378f7'}
+                  ]
+                )
+              },
               data: [18203, 23489, 29034, 104970, 131744, 630230]
-            },
-            {
-              name: '2012年',
-              type: 'bar',
-              data: [19325, 23438, 31000, 121594, 134141, 681807]
             }
           ]
         }
