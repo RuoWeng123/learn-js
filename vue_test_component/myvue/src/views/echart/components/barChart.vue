@@ -52,7 +52,15 @@
           ],
           yAxis: [
             {
-              type: 'value'
+              type: 'value',
+              //显示轴线
+              axisLine: {
+                show: false
+              },
+              //显示坐标刻度
+              axisTick:{
+                show:false
+              }
             }
           ],
           series: [
