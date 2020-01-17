@@ -62,7 +62,14 @@ export default {
                 showArea:false
             },
             lineData:[],
-            inversionBarData:[],
+            inversionBarData:[
+                {name:"ruoweng",value:100},
+                {name:"haohe",value:1200},
+                {name:"zhiwei",value:2200},
+                {name:"hongyu",value:3200},
+                {name:"pengxu",value:2400},
+                {name:"malong",value:5200}
+            ],
             inversionBarConfig:{}
         }
     }

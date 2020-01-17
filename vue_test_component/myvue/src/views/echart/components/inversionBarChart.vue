@@ -41,8 +41,8 @@
         const options = {
           color: '#45A1FF ',
           title: {
-            text: '世界人口总量',
-            subtext: '数据来自网络'
+            show: this.config.showTitle,
+            text: '世界人口总量'
           },
           tooltip: {
             trigger: 'axis',
@@ -51,7 +51,8 @@
             }
           },
           legend: {
-            data: ['2011年', '2012年']
+            show:this.config.showLegend,
+            data: ['2011年', '2012年']  //当前series下sereis中得name集合
           },
           grid: {
             left: '3%',
@@ -69,7 +70,7 @@
           yAxis: {
             show: true,
             type: 'category',
-            data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)']
+            data: this.series.map(v=>v.name)
           },
           series: [
             {
@@ -85,7 +86,7 @@
                   ]
                 )
               },
-              data: [18203, 23489, 29034, 104970, 131744, 630230]
+              data: this.series
             }
           ]
         }
