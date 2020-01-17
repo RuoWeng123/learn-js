@@ -24,6 +24,12 @@
             <inversion-bar-chart :series="inversionBarData" :config="inversionBarConfig"></inversion-bar-chart>
             </div>
         </div>
+        <div class="pb16">
+            <div class="title">进度环</div>
+            <div class="container">
+              <schedule-circle></schedule-circle>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -31,13 +37,15 @@ import PieChart from "./components/pieChart"
 import LineChart from "./components/lineChart"
 import BarChart from "./components/barChart"
 import InversionBarChart from './components/inversionBarChart'
+import ScheduleCircle from './components/scheduleCircle'
 export default {
     name:"echart",
     components:{
         PieChart,
         LineChart,
         BarChart,
-        InversionBarChart
+        InversionBarChart,
+        ScheduleCircle
     },
     data(){
         return{
@@ -98,9 +106,18 @@ export default {
     border: 1px solid #0c8032;
 }
 
+.container{
+    display:block;
+    width: 100%;
+    height: 200px;
+    border: 1px solid #E4E4E4;
+
+}
+
 .chart-container{
     display:block;
     width: 100%;
     height: 460px;
+    padding: 14px 14px;
 }
 </style>
