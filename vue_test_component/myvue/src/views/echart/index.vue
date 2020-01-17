@@ -1,14 +1,28 @@
 <template>
     <div>
-        <div class="header">echart  test  page</div>
-        <div class="pie-container">
-            <pie-chart :series="pieData" :config="pieConfig"></pie-chart>
+        <div class="mb16">
+            <div class="title">基础饼图</div>
+            <div class="bar-container">
+            <pie-chart :series="pieData" :config="pieConfig" class="chart-container"></pie-chart>
+            </div>
         </div>
-        <div class="line-container">
-            <line-chart :series="pieData" :config="pieConfig"></line-chart>
+        <div class="mb16">
+            <div class="title">基础折线图</div>
+            <div class="bar-container">
+            <line-chart :series="pieData" :config="pieConfig"  class="chart-container"></line-chart>
+            </div>
         </div>
-        <div class="bar-container">
-            <bar-chart :series="pieData" :config="pieConfig"></bar-chart>
+        <div  class="mb16">
+            <div class="title">基础柱状图</div>
+            <div class="bar-container">
+                <bar-chart  :series="pieData" :config="pieConfig"></bar-chart>
+            </div>
+        </div>
+        <div class="pb16">
+            <div class="title">横向柱状图</div>
+            <div class="bar-container">
+            <inversion-bar-chart :series="inversionBarData" :config="inversionBarConfig"></inversion-bar-chart>
+            </div>
         </div>
     </div>
 </template>
@@ -16,12 +30,14 @@
 import PieChart from "./components/pieChart"
 import LineChart from "./components/lineChart"
 import BarChart from "./components/barChart"
+import InversionBarChart from './components/inversionBarChart'
 export default {
     name:"echart",
     components:{
         PieChart,
         LineChart,
-        BarChart
+        BarChart,
+        InversionBarChart
     },
     data(){
         return{
@@ -45,7 +61,9 @@ export default {
                 },
                 showArea:false
             },
-            lineData:[]
+            lineData:[],
+            inversionBarData:[],
+            inversionBarConfig:{}
         }
     }
 }
@@ -55,18 +73,27 @@ export default {
     display:block;
     width: 1500px;
     height: 500px;
+    overflow: hidden;
     border: 1px solid #0c8032;
 }
 .line-container{
     display:block;
     width: 1500px;
     height: 500px;
+    overflow: hidden;
     border: 1px solid #0c8032;
 }
 .bar-container{
     display:block;
     width: 1500px;
-    height: 500px;
+    height: 540px;
+    overflow: hidden;
     border: 1px solid #0c8032;
+}
+
+.chart-container{
+    display:block;
+    width: 100%;
+    height: 460px;
 }
 </style>

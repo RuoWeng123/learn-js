@@ -35,7 +35,6 @@
     },
     methods: {
       drawChart() {
-
         this.chartObj.setOption({
           color:COLOR,
           tooltip: {
@@ -89,7 +88,7 @@
   }
 </script>
 
-<style lang="css" scoped>
+<style lang="less" scoped>
   .chart-container {
     display: flex;
     width: 100%;
