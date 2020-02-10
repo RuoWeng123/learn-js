@@ -1,16 +1,18 @@
 import Vue from 'vue'
 import App from './App.vue'
+import Icon from 'vue-svg-icon/Icon.vue'
 import router from './router/'
 import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 import "./styles/index.less"
-import 'view-design/dist/styles/iview.css'
-import {Button, Circle} from 'view-design'
+import iView from 'iview'
+//import 'iview/dist/styles/iview.css'
 Vue.config.productionTip = false
-
 Vue.use(ElementUI)
+Vue.use(iView)
 
-Vue.component('Button',Button)
-Vue.component('i-circle',Circle)
+
+Vue.component('icon', Icon)
 new Vue({
   router,
   render: h => h(App)
