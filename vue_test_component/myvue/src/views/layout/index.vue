@@ -59,7 +59,7 @@
         height:54px;
         line-height: 54px;
         padding: 4px 14px;
-        border-right:1px solid #e4e4e4;
+        border-bottom:1px solid #e4e4e4;
         text-align: left;
         font-size:18px;
 
