@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="mb16">
+       <!-- <div class="mb16">
             <div class="title">基础饼图</div>
             <div class="bar-container">
             <pie-chart :series="pieData" :config="pieConfig" class="chart-container"></pie-chart>
@@ -29,6 +29,20 @@
             <div class="container">
               <schedule-circle></schedule-circle>
             </div>
+        </div>-->
+        <div class="pb16">
+            <div class="title">new test</div>
+            <div class="container">
+                <div id="new-bar-chart"></div>
+            </div>
+        </div>
+        <div class="editor">
+            <el-collapse v-model="activeName">
+                <el-collapse-item v-for="item in chartOptions" :key="item.value" :title="item.title" :name="item.title"
+                >
+
+                </el-collapse-item>
+            </el-collapse>
         </div>
     </div>
 </template>
@@ -49,6 +63,16 @@ export default {
     },
     data(){
         return{
+            chartBaseOptions:[
+                {title:"title",name:"标题"},
+                {title:"textStyle",name:"字体样式"},
+                {title:"legend",name:"图例"},
+                {title:"grid",name:"网格"},
+                {title:"tooltip",name:"悬浮提示框"}
+            ],
+            chartTypeOptions:[
+
+            ],
             pieData:[
                 {name:"ruoweng",value:100},
                 {name:"hongyu",value:80},
@@ -80,6 +104,9 @@ export default {
             ],
             inversionBarConfig:{}
         }
+    },
+    mounted(){
+
     }
 }
 </script>
