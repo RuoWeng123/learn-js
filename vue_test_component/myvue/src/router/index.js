@@ -38,6 +38,11 @@ const routers = [
                 path:"/tree",
                 name:"tree",
                 component: _import("tree/index")
+            },
+            {
+                path:"/magic",
+                name:"magic",
+                component: _import("magicTest/index")
             }
         ]
     }

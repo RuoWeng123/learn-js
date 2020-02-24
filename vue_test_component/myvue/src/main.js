@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import magic from './magic'
 import Icon from 'vue-svg-icon/Icon.vue'
 import router from './router/'
 import ElementUI from 'element-ui'
@@ -10,6 +11,7 @@ import iView from 'iview'
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(iView)
+Vue.use(magic)
 
 
 Vue.component('icon', Icon)
