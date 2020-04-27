@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="ml16">
        <!-- <div class="mb16">
             <div class="title">基础饼图</div>
             <div class="bar-container">
@@ -12,37 +12,31 @@
             <line-chart :series="pieData" :config="pieConfig"  class="chart-container"></line-chart>
             </div>
         </div>
-        <div  class="mb16">
-            <div class="title">基础柱状图</div>
-            <div class="bar-container">
-                <bar-chart  :series="pieData" :config="pieConfig"></bar-chart>
-            </div>
-        </div>
+
         <div class="pb16">
             <div class="title">横向柱状图</div>
             <div class="bar-container">
             <inversion-bar-chart :series="inversionBarData" :config="inversionBarConfig"></inversion-bar-chart>
             </div>
         </div>
+
         <div class="pb16">
             <div class="title">进度环</div>
             <div class="container">
               <schedule-circle></schedule-circle>
             </div>
-        </div>-->
-        <div class="pb16">
-            <div class="title">new test</div>
-            <div class="container">
-                <div id="new-bar-chart"></div>
-            </div>
+        </div> -->
+      <div  class="mb16">
+        <div class="title">基础柱状图</div>
+        <div class="bar-container">
+          <bar-chart  :series="pieData" :config="pieConfig"></bar-chart>
         </div>
-        <div class="editor">
-            <el-collapse v-model="activeName">
-                <el-collapse-item v-for="item in chartOptions" :key="item.value" :title="item.title" :name="item.title"
-                >
-
-                </el-collapse-item>
-            </el-collapse>
+      </div>
+        <div class="pb16">
+            <div class="title mb10">surface 表格</div>
+            <div class="container" style="height: 800px;width: 1200px;">
+              <surface-chart></surface-chart>
+            </div>
         </div>
     </div>
 </template>
@@ -51,15 +45,18 @@ import PieChart from "./components/pieChart"
 import LineChart from "./components/lineChart"
 import BarChart from "./components/barChart"
 import InversionBarChart from './components/inversionBarChart'
+import surfaceChart from './components/surfaceChart'
 import ScheduleCircle from './components/scheduleCircle'
 export default {
     name:"echart",
     components:{
-        PieChart,
+       /* PieChart,
         LineChart,
-        BarChart,
-        InversionBarChart,
-        ScheduleCircle
+
+        InversionBarChart,*/
+        //ScheduleCircle
+      BarChart,
+      surfaceChart
     },
     data(){
         return{
