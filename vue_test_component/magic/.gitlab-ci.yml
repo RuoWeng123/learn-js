@@ -1,0 +1,42 @@
+image: docker:latest
+
+variables:
+  DOCKER_IMAGE_TAG: $CI_COMMIT_REF_SLUG
+  DOCKER_IMAGE_NAME: $CI_REGISTRY
+  GIT_SUBMODULE_STRATEGY: recursive
+
+services:
+ - docker:dind
+
+stages:
+  - build
+  - build-push
+
+# 打 tag 时触发 npm 发布
+build:
+  stage: build
+  script:
+    - docker build --no-cache --build-arg VERSION=$CI_COMMIT_TAG .
+  only:
+    - tags
+
+# 提交触发构建文档（master 分支生成 latest 镜像；dev 分支生成 dev 镜像）
+build-doc:
+  stage: build-push
+  script:
+  # - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  # TODO: 管理员添加 CI 变量后修改
+  - docker login -u leaniot -p Zbsjpwd123 harbor.leaniot.cn
+  # - export DOCKER_IMAGE_NAME=$CI_REGISTRY/${CI_PROJECT_PATH#*/}-doc
+  # TODO: 管理员添加 CI 变量后修改
+  - export DOCKER_IMAGE_NAME=harbor.leaniot.cn/magic/doc
+  - if [ $DOCKER_IMAGE_TAG  == "master" ]; then DOCKER_IMAGE_TAG="latest"; fi
+  - echo $DOCKER_IMAGE_TAG
+  - |
+    echo -e "Image Name: \033[1;35m$DOCKER_IMAGE_NAME\033[0m"
+    echo -e "Image Tag:  \033[1;35m$DOCKER_IMAGE_TAG\033[0m"
+  - docker build -t $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG  -f Dockerfile-doc .
+  - docker push $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+  only:
+  - master
+  - dev

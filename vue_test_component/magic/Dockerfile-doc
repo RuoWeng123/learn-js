@@ -1,0 +1,19 @@
+# 组件库文档镜像
+#   TODO: 当前以 dev 形式发布。后续解决构建问题后，需改进此 Dockerfile。
+
+FROM harbor.leaniot.cn/lib/vue-cli
+
+WORKDIR /app
+
+RUN yarn config set registry https://registry.npm.taobao.org && \
+    yarn global add vuepress
+
+COPY package.json ./
+COPY yarn.lock ./
+RUN yarn config set registry https://registry.npm.taobao.org && \
+    yarn install --ignore-optional
+
+COPY . .
+EXPOSE 8080
+
+CMD yarn run docs
