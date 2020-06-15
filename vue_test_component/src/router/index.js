@@ -40,6 +40,11 @@ const routers = [
                 component: _import("tree/index")
             },
             {
+                path:"/authorityTree",
+                name:"权限树",
+                component: _import("tree/authorityTree")
+            },
+            {
                 path:"/magic",
                 name:"magic",
                 component: _import("magicTest/index")
