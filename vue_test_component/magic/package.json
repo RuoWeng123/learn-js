@@ -19,7 +19,7 @@
     "element-ui": "^2.10.0",
     "eslint-loader": "^3.0.3",
     "eslint-plugin-import": "^2.20.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "moment": "^2.24.0",
     "print-js": "^1.0.61",
     "qrcodejs2": "^0.0.2",
